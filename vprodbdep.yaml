@@ -32,7 +32,7 @@ spec:
                   name: app-secret
                   key: db-pass
       nodeSelector:
-        hostname: k8s-node-1
+        project: vprofile
       volumes:
         - name: vpro-db-data
           persistentVolumeClaim:
