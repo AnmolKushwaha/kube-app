@@ -31,7 +31,7 @@ spec:
             secretKeyRef:
               name: app-secret
               key: db-pass
-    volumes:
+      volumes:
       - name: vpro-db-data
         persistentVolumeClaim:
           claimName: vpro-db-data-claim
