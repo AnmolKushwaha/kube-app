@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vprodb
-        image: anmolkushwaha/vprofiledb:V1
+        image: vprofile/vprofiledb:V1
         args:
          - "--ignore-db-dir=lost+found"
         volumeMounts:
@@ -32,6 +32,6 @@ spec:
                name: app-secret
                key: db-pass
       volumes:
-      - name: vpro-db-data
-        persistentVolumeClaim:
-          claimName: vpro-db-data-claim
+         - name: vpro-db-data
+           persistentVolumeClaim:
+              claimName: vpro-db-data-claim
