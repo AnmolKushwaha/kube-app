@@ -29,7 +29,7 @@ spec:
              secretKeyRef:
                name: app-secret
                key: db-pass
-     nodeSelector:
+      nodeSelector:
          project: vprofile
       volumes:
          - name: vpro-db-data
