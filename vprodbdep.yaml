@@ -26,11 +26,11 @@ spec:
         - name: vprodb-port
           containerPort: 3306
         env:
-        - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: app-secret
-              key: db-pass
+         - name: MYSQL_ROOT_PASSWORD
+           valueFrom:
+             secretKeyRef:
+               name: app-secret
+               key: db-pass
       volumes:
       - name: vpro-db-data
         persistentVolumeClaim:
