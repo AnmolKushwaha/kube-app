@@ -31,8 +31,6 @@ spec:
                 secretKeyRef:
                   name: app-secret
                   key: db-pass
-      nodeSelector:
-        project: vprofile
       volumes:
         - name: vpro-db-data
           persistentVolumeClaim:

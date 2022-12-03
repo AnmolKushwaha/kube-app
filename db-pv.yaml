@@ -7,12 +7,10 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 2Gi
+    storage: 3Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    path: /docker_volume/
-    server: 10.0.0.117
-    readOnly: false
+  hostPath:
+     path: "/mnt/data"
