@@ -35,6 +35,5 @@ spec:
          zone: us-east-1f
       volumes:
          - name: vpro-db-data
-           awsElasticBlockStore:
-              volumeID: vol-068451097f4f7cf62
-              fsType: ext4
+           persistentVolumeClaim:
+             claimName: vpro-db-data-claim
