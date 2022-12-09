@@ -36,4 +36,4 @@ spec:
       volumes:
          - name: vpro-db-data
            persistentVolumeClaim:
-             claimName: vpro-db-data-claim
+             claimName: vpro-db-data-pvc

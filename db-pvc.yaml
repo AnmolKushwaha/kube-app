@@ -1,11 +1,13 @@
+piVersion: v1
 kind: PersistentVolumeClaim
-apiVersion: v1
 metadata:
-  name: vpro-db-data-claim
+  name: vpro-db-data-pvc
 spec:
-  storageClassName: standard
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 3Gi
+  storageClassName: standard
+  volumeMode: Filesystem
+  volumeName:  vpro-db-data

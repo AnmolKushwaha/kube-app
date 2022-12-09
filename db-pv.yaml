@@ -1,14 +1,16 @@
-kind: PersistentVolume
+---
 apiVersion: v1
+kind: PersistentVolume
 metadata:
   name: vpro-db-data
-  labels:
-    type: amazonEBS
 spec:
-  capacity:
-    storage: 3Gi
   accessModes:
   - ReadWriteOnce
   awsElasticBlockStore:
-    volumeID: vol-068451097f4f7cf62
     fsType: ext4
+    volumeID: aws://us-east-1f/vol-068451097f4f7cf62
+  capacity:
+    storage: 3Gi
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: standard
+  volumeMode: Filesystem
