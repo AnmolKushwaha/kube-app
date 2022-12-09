@@ -11,6 +11,6 @@ spec:
     volumeID: aws://us-east-1f/vol-068451097f4f7cf62
   capacity:
     storage: 3Gi
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Delete
   storageClassName: standard
   volumeMode: Filesystem
