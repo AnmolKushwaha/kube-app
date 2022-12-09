@@ -17,6 +17,8 @@ spec:
       containers:
       - name: vprodb
         image: anmolkushwaha/vprofiledb:V1
+        args:
+         - "--ignore-db-dir=lost+found"
         volumeMounts:
         - mountPath: /var/lib/mysql
           name: vpro-db-data
@@ -30,8 +32,9 @@ spec:
                name: app-secret
                key: db-pass
       nodeSelector:
-         project: vprofile
+         zone: us-east-1f
       volumes:
          - name: vpro-db-data
-           persistentVolumeClaim:
-              claimName: vpro-db-data-claim
+           awsElasticBlockStore:
+              volumeID: vol-068451097f4f7cf62
+              fstype: ext4
