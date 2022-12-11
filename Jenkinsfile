@@ -12,31 +12,43 @@ pipeline {
     environment {
         registry = "anmolkushwaha/vprofileapp"
         registryCredential = 'dockerhub'
+        SONARSERVER = 'sonarserver'
+        SONARSCANNER = 'sonarscanner'
     }
 
     stages {
-        stage('Build'){
+        stage('BUILD'){
             steps {
-                sh 'mvn -s settings.xml -DskipTests install'
+                sh 'mvn clean install -DskipTests'
             }
             post {
                 success {
-                    echo "Now Archiving."
-                    archiveArtifacts artifacts: '**/*.war'
+                    echo 'Now Archiving...'
+                    archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
 
-        stage('Test'){
+        stage('UNIT TEST'){
             steps {
-                sh 'mvn -s settings.xml test'
+                sh 'mvn test'
             }
-
         }
 
-        stage('Checkstyle Analysis'){
+        stage('INTEGRATION TEST'){
             steps {
-                sh 'mvn -s settings.xml checkstyle:checkstyle'
+                sh 'mvn verify -DskipUnitTests'
+            }
+        }
+
+        stage ('CODE ANALYSIS WITH CHECKSTYLE'){
+            steps {
+                sh 'mvn checkstyle:checkstyle'
+            }
+            post {
+                success {
+                    echo 'Generated Analysis Result'
+                }
             }
         }
         
