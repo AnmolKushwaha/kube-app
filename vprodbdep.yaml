@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: vprodb
-        image: anmolkushwaha/vprofiledb:V1
         args:
          - "--ignore-db-dir=lost+found"
+        image: anmolkushwaha/vprofiledb:V1
         volumeMounts:
         - mountPath: /var/lib/mysql
           name: vpro-db-data
@@ -31,9 +31,7 @@ spec:
              secretKeyRef:
                name: app-secret
                key: db-pass
-      nodeSelector:
-         zone: us-east-1f
       volumes:
          - name: vpro-db-data
            persistentVolumeClaim:
-             claimName: vpro-db-data-pvc
+              claimName: vpro-db-data-claim
